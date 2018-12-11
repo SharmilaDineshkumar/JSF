@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <script type="text/javascript">
+        function addNewRow()
+        {
+           var product=addRow();
+           var table=document.getElementById('#tab_logic');
+           
+           var rowCount = table.rows.length;
+    var row = table.insertRow(rowCount);
+    
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    var cell6 = row.insertCell(5);
+    var cell7 = row.insertCell(6);
+    var cell8 = row.insertCell(7);
+    cell1.innerHTML = product.keys("productID");
+    cell2.innerHTML = product.keys("productID");
+    cell3.innerHTML = product.keys("productID");
+    cell4.innerHTML = product.keys("productID");
+    cell5.innerHTML = product.keys("productID");
+    cell6.innerHTML = product.keys("productID");
+    cell7.innerHTML = product.keys("productID");
+    cell8.innerHTML = product.keys("productID");
+        }
+        </script>
+    </h:head>
+    <h:body>
+        <br></br>
+        <center><h2>Billing System</h2></center>
+<br></br>
+<h:form>
+<h:outputLabel value="Product : "></h:outputLabel><h:selectOneMenu value="#{billing.productName}">
+    <f:selectItems value="#{billing.products}" />
+</h:selectOneMenu>
+<h:outputLabel value="Qty : "></h:outputLabel><h:inputText id="Qty" value="#{billing.qty}"/>
+<p:remoteCommand name="addRow" update="msgs"
+			action="#{billing.showDetails()}"/>
+ 
+		<p:growl id="msgs" showDetail="true" />
+		<h:commandButton type="button" value="Add This Product"
+			onclick="addNewRow()"/>
+<h:commandButton value="Add" action="#{billing.showDetails()}"></h:commandButton>
+</h:form>
+      <table class="table table-bordered table-hover" id="tab_logic">
+        <thead>
+          <tr>
+            <th class="text-center"> # </th>
+            <th class="text-center"> Product Id </th>
+            <th class="text-center"> Product Name </th>
+            <th class="text-center"> Qty </th>
+            <th class="text-center"> Price </th>
+            <th class="text-center"> Discount</th>
+            <th class="text-center"> Category</th>
+            <th class="text-center"> Total </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class='addr0'>
+            <td>1</td>
+            
+            <td><h:outputText class="form-control pid" value="#{billing.productID}"/></td>
+            <td><p><h:outputText class="form-control pname" value="#{billing.productName}"/></p></td>
+            <td><p><h:outputText class="form-control qty" value="#{billing.qty}"/></p></td>
+            <td><p><h:outputText class="form-control price" value="#{billing.price}"/></p></td>
+            <td><p><h:outputText class="form-control discount" value="#{billing.discount}"/></p></td>
+            <td><p><h:outputText class="form-control category" value="#{billing.category}"/></p></td>
+            <td><p><h:outputText class="form-control total"/></p></td>
+          </tr>
+          <tr class='addr1'></tr>
+        </tbody>
+      </table>
+    </h:body>
+</html>
+

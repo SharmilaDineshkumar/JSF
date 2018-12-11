@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+            <title>Coffee Time</title>
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="billingcalc.js"></script>
+<script type="text/javascript">
+    function submit()
+    {
+        var pid=document.getElementById('product').value;
+        var pname=document.getElementById('productName').value;
+        var qty=document.getElementById('qty').value;
+        var price=document.getElementById('price').value;
+        var discount=document.getElementById('discount').value;
+        var category=document.getElementById('category').value;
+        var tax=document.getElementById('tax_amount').value;
+        var total=document.getElementById('total_amount').value;
+         var table = document.getElementById("billTable");
+         var rowCount = table.rows.length;
+    var row = table.insertRow(rowCount);
+    
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    var cell6 = row.insertCell(5);
+    var cell7 = row.insertCell(6);
+    var cell8 = row.insertCell(7);
+    cell1.innerHTML = pid;
+    cell2.innerHTML = pname;
+    cell3.innerHTML = qty;
+    cell4.innerHTML = price;
+    cell5.innerHTML = discount;
+    cell6.innerHTML = category;
+    cell7.innerHTML = tax;
+    cell8.innerHTML = total;
+    
+            document.getElementById('product').value=null;
+        document.getElementById('productName').value=null;
+       document.getElementById('qty').value=null;
+        document.getElementById('price').value=null;
+        document.getElementById('discount').value=null;
+        document.getElementById('category').value=null;
+        document.getElementById('tax_amount').value=null;
+        document.getElementById('total_amount').value=null;
+        document.getElementById('total').value=null;
+        document.getElementById('sub_total').value=null;
+        document.getElementById('tax').value=null;
+        
+    }
+</script>
+    </h:head>
+    <h:body>
+        <br></br><br></br>
+        <center><h2>Billing System</h2></center>
+<br></br><br></br><br></br>
+
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12">
+        
+      <table class="table table-bordered table-hover" id="tab_logic">
+        <thead>
+          <tr>
+            <th class="text-center"> # </th>
+            <th class="text-center"> Product Id </th>
+            <th class="text-center"> Product Name </th>
+            <th class="text-center"> Qty </th>
+            <th class="text-center"> Price </th>
+            <th class="text-center"> Discount</th>
+            <th class="text-center"> Category</th>
+            <th class="text-center"> Total </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id='addr0'>
+            <td>1</td>
+            <td><input type="text" id='product'  placeholder='Enter Product id' class="form-control"/></td>
+            <td><input type="text" id='productName'  placeholder='Enter Product name' class="form-control"/></td>
+            <td><input type="number" id='qty' placeholder='Enter Qty' class="form-control qty" step="0" min="0"/></td>
+            <td><input type="number" id='price' placeholder='Enter Unit Price' class="form-control price" step="0.00" min="0"/></td>
+            <td><input type="number" id='discount' placeholder='Discount' class="form-control discount" step="0.00" min="0"/></td>
+            <td><input type="text" id='category' placeholder='Category' class="form-control category" step="0.00" min="0"/></td>
+            <td><input type="number" id='total' placeholder='0.00' class="form-control total" readonly="true"/></td>
+          </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row clearfix" style="margin-top:20px">
+    <div class="pull-right col-md-4">
+      <table class="table table-bordered table-hover" id="tab_logic_total">
+        <tbody>
+          <tr>
+            <th class="text-center">Sub Total</th>
+            <td class="text-center"><input type="number" name='sub_total' placeholder='0.00' class="form-control" id="sub_total" readonly="true"/></td>
+          </tr>
+          <tr>
+            <th class="text-center">Tax</th>
+            <td class="text-center"><div class="input-group mb-2 mb-sm-0">
+                <input type="number" class="form-control" id="tax" placeholder="0"/>
+                <div class="input-group-addon">%</div>
+              </div></td>
+          </tr>
+          <tr>
+            <th class="text-center">Tax Amount</th>
+            <td class="text-center"><input type="number" name='tax_amount' id="tax_amount" placeholder='0.00' class="form-control" readonly="true"/></td>
+          </tr>
+          <tr>
+            <th class="text-center">Grand Total</th>
+            <td class="text-center"><input type="number" name='total_amount' id="total_amount" placeholder='0.00' class="form-control" readonly="true"/></td>
+          </tr>
+        </tbody>
+      </table>
+        
+    </div>
+  </div>
+</div>
+<center><input type="submit" value="Submit" onclick="submit()"/></center>
+<div>
+    <center><h3><b>Product Details</b></h3></center>
+    <center>
+        <table id="billTable" border="1" cellpadding="10px" cellspacing="5px">
+            <tr>
+            
+            <th class="text-center"> Product Id </th>
+            <th class="text-center"> Product Name </th>
+            <th class="text-center"> Qty </th>
+            <th class="text-center"> Price </th>
+            <th class="text-center"> Discount</th>
+            <th class="text-center"> Category</th>
+            <th class="text-center"> Tax</th>
+            <th class="text-center"> Total </th>
+            </tr>
+           
+        </table>
+    </center>
+</div>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Coffee Time</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+      .rightsidenav
+      {
+          background-image: url('images/prodback.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: 100%; 
+  width: 100% ;
+  position: fixed; 
+   
+  top: 85px; 
+  left: 200px;
+  background-color: whitesmoke;
+  overflow-x: hidden; 
+  padding-top: 20px;
+  
+      }
+      .sidenav {
+  height: 100%;
+  width: 200px; 
+  position: fixed; 
+   
+  top: 85px; 
+  left: 0;
+  background-color: sienna; 
+  overflow-x: hidden; 
+  padding-top: 20px;
+  
+  border-color: black;
+}
+.productTable{
+    text-align: center;
+}
+  </style>
+    </h:head>
+    <h:body>
+       <div>
+        <ui:insert name="navbars">
+            <ui:include src="navbars.xhtml"></ui:include>
+        </ui:insert>
+        </div>
+       
+             <div class="sidenav">
+                 <br></br><br></br><br></br><br></br>
+        <center>
+            <ul style="list-style-type:none">
+                
+                <li> <h:outputLabel styleClass="link"> <a href="AddProduct.xhtml" style="color: black" target="rightsidenav">Add a Product</a></h:outputLabel></li>
+                <li>  <h:outputLabel styleClass="link">  <a href="ListProduct.xhtml" style="color: black">View Product List</a></h:outputLabel></li>
+                <li>  <h:outputLabel styleClass="link"> <a href="#" style="color: black">Modify Product List</a></h:outputLabel></li>
+            </ul>
+        </center>
+            </div>
+        <iframe name="rightsidenav" src="ListProduct.xhtml" class="rightsidenav">
+        <div class="rightsidenav">
+        <ui:insert name="content">
+            <br></br><br></br>
+
+   
+           
+        </ui:insert>
+             </div>
+        </iframe>
+    </h:body>
+</html>
+
