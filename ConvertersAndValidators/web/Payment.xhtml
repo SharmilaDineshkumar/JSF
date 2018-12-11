@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Validator</title>
+    </h:head>
+    <h:body>
+        <h3>Enter Your card details</h3>
+        <h:form>
+            Card Number : <h:inputText value="#{paymentDetails.cardNo}">
+            <f:convertNumber/>
+            <f:validateLongRange minimum="111111111111" maximum="999999999999"></f:validateLongRange>>
+        </h:inputText>
+        <br></br>
+        <br></br>
+        CVC code: <h:inputText value="#{paymentDetails.cvc}">
+            <f:convertNumber integerOnly="true"/>
+            <f:validateLength minimum="3" maximum="3"></f:validateLength>
+        </h:inputText>
+        <br></br>
+        <br></br>
+        Amount:<h:inputText validatorMessage="Enter amount between 500 to 1000" value="#{paymentDetails.amount}">
+            <f:convertNumber type="currency" currencySymbol="$"/>
+            <f:validateDoubleRange minimum="500" maximum="1000"/>
+        </h:inputText>
+        <br></br>
+        <br></br>
+        Cardholder Name : <h:inputText validatorMessage="cardholder name should have only alphapets" value="#{paymentDetails.cardholder}">
+            <f:validateRegex pattern="[a-zA-Z]*"/>
+        </h:inputText>
+        <h:commandButton value="Pay" action="#{paymentDetails.showDetails()}"></h:commandButton></h:form>
+    </h:body>
+</html>
+
